@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heladería Dulce Frío</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* NAVBAR */
+header {
+    background-color: #c40000;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* HERO */
+.hero {
+    background: url('https://images.unsplash.com/photo-1505253216365-18c6c0c8f45f') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3em;
+}
+
+/* PRODUCTOS */
+.productos {
+    padding: 40px;
+    text-align: center;
+}
+
+.productos h2 {
+    color: #c40000;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.precio {
+    color: #c40000;
+    font-weight: bold;
+}
+
+/* BOTÓN */
+button {
+    background-color: #c40000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #900000;
+}
+
+/* CONTACTO */
+.contacto {
+    background-color: #f5f5f5;
+    padding: 30px;
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    background-color: #c40000;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>🍦 Heladería Dulce Frío</h1>
+</header>
+
+<section class="hero">
+    <h1>El mejor helado de la ciudad</h1>
+    <p>Sabores artesanales, frescos y deliciosos</p>
+</section>
+
+<section class="productos">
+    <h2>Nuestros Sabores</h2>
+
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae">
+            <h3>Chocolate</h3>
+            <p class="precio">$2.500</p>
+            <button onclick="comprar('Chocolate')">Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+            <h3>Frutilla</h3>
+            <p class="precio">$2.500</p>
+            <button onclick="comprar('Frutilla')">Comprar</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1478144592103-25e218a04891">
+            <h3>Vainilla</h3>
+            <p class="precio">$2.500</p>
+            <button onclick="comprar('Vainilla')">Comprar</button>
+        </div>
+    </div>
+</section>
+
+<section class="contacto">
+    <h2>Contacto</h2>
+    <p>📍 Santiago, Chile</p>
+    <p>📞 +56 9 1234 5678</p>
+</section>
+
+<footer>
+    <p>© 2026 Heladería Dulce Frío</p>
+</footer>
+
+<script>
+function comprar(sabor) {
+    alert("Has seleccionado el helado de " + sabor);
+}
+</script>
+
+</body>
+</html> 
