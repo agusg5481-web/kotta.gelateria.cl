@@ -3,101 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heladería Dulce Frío</title>
+<title>Kotta Heladería</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-}
+body { margin:0; font-family: Arial; }
 
-/* NAVBAR */
 header {
-    background-color: #c40000;
-    color: white;
-    padding: 15px;
-    text-align: center;
+    background:#c40000;
+    color:white;
+    padding:15px;
+    text-align:center;
 }
 
-/* HERO */
 .hero {
-    background: url('https://images.unsplash.com/photo-1505253216365-18c6c0c8f45f') no-repeat center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
+    background:linear-gradient(rgba(196,0,0,0.6),rgba(196,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1505253216365-18c6c0c8f45f') center/cover;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
 }
 
-.hero h1 {
-    font-size: 3em;
+.hero button {
+    padding:12px;
+    background:white;
+    color:#c40000;
+    border:none;
+    cursor:pointer;
 }
 
 /* PRODUCTOS */
-.productos {
-    padding: 40px;
-    text-align: center;
-}
-
-.productos h2 {
-    color: #c40000;
-}
-
+.productos { padding:40px; text-align:center; }
 .grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
 }
-
 .card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    width: 250px;
-    padding: 15px;
-    transition: 0.3s;
+    width:250px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
+.card img { width:100%; }
+.precio { color:#c40000; font-weight:bold; }
 
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.precio {
-    color: #c40000;
-    font-weight: bold;
-}
-
-/* BOTÓN */
 button {
-    background-color: #c40000;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    background:#c40000;
+    color:white;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+    margin:5px;
 }
 
-button:hover {
-    background-color: #900000;
+/* CARRITO */
+.carrito {
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
-/* CONTACTO */
-.contacto {
-    background-color: #f5f5f5;
-    padding: 30px;
-    text-align: center;
+/* RESEÑAS */
+.reseñas {
+    background:#f5f5f5;
+    padding:40px;
+    text-align:center;
 }
 
-/* FOOTER */
+/* MAPA */
+.mapa { padding:30px; }
+
+/* WHATSAPP */
+.whatsapp {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:15px;
+    border-radius:50%;
+    text-decoration:none;
+}
+
 footer {
-    background-color: #c40000;
-    color: white;
-    text-align: center;
-    padding: 10px;
+    background:#c40000;
+    color:white;
+    text-align:center;
+    padding:10px;
 }
 </style>
 
@@ -106,56 +103,87 @@ footer {
 <body>
 
 <header>
-    <h1>🍦 Heladería Dulce Frío</h1>
+<h1> Kotta Heladería</h1>
 </header>
 
 <section class="hero">
-    <h1>El mejor helado de la ciudad</h1>
-    <p>Sabores artesanales, frescos y deliciosos</p>
+<h1>Helados artesanales premium</h1>
+<p>Compra en local o pide delivery</p>
+<button onclick="scrollToProductos()">Ver catálogo</button>
 </section>
 
-<section class="productos">
-    <h2>Nuestros Sabores</h2>
+<div class="carrito">
+🛒 <span id="contador">0</span> productos
+<button onclick="enviarPedido()">Pedir</button>
+</div>
 
-    <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae">
-            <h3>Chocolate</h3>
-            <p class="precio">$2.500</p>
-            <button onclick="comprar('Chocolate')">Comprar</button>
-        </div>
+<section class="productos" id="productos">
+<h2>Catálogo</h2>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-            <h3>Frutilla</h3>
-            <p class="precio">$2.500</p>
-            <button onclick="comprar('Frutilla')">Comprar</button>
-        </div>
+<div class="grid">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1478144592103-25e218a04891">
-            <h3>Vainilla</h3>
-            <p class="precio">$2.500</p>
-            <button onclick="comprar('Vainilla')">Comprar</button>
-        </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae">
+<h3>Chocolate</h3>
+<p class="precio">$2.500</p>
+<button onclick="agregar('Chocolate')">Agregar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+<h3>Frutilla</h3>
+<p class="precio">$2.500</p>
+<button onclick="agregar('Frutilla')">Agregar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1478144592103-25e218a04891">
+<h3>Vainilla</h3>
+<p class="precio">$2.500</p>
+<button onclick="agregar('Vainilla')">Agregar</button>
+</div>
+
+</div>
 </section>
 
-<section class="contacto">
-    <h2>Contacto</h2>
-    <p>📍 Santiago, Chile</p>
-    <p>📞 +56 9 1234 5678</p>
+<section class="reseñas">
+<h2>Opiniones</h2>
+<p>⭐ “El mejor helado que he probado”</p>
+<p>⭐ “Excelente atención y delivery rápido”</p>
+<p>⭐ “100% recomendado”</p>
+</section>
+
+<section class="mapa">
+<h2>Ubicación</h2>
+<iframe src="https://maps.app.goo.gl/15DXA2hGjykGegng8&output=embed"
+width="100%" height="300"></iframe>
 </section>
 
 <footer>
-    <p>© 2026 Heladería Dulce Frío</p>
+<p>© 2026 Kotta Heladería</p>
 </footer>
 
+<a class="whatsapp" href="https://wa.me/56982947094" target="_blank">📲</a>
+
 <script>
-function comprar(sabor) {
-    alert("Has seleccionado el helado de " + sabor);
+let carrito = [];
+
+function agregar(producto){
+    carrito.push(producto);
+    document.getElementById("contador").innerText = carrito.length;
+}
+
+function enviarPedido(){
+    let numero = "56982947094"; // CAMBIAR
+    let mensaje = "Hola, quiero realizar un pedido:\n" + carrito.join(", ");
+    let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+    window.open(url);
+}
+
+function scrollToProductos(){
+    document.getElementById("productos").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
 </body>
-</html> 
+</html>
